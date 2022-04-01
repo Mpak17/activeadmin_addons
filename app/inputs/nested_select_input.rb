@@ -78,9 +78,11 @@ class NestedSelectInput < ActiveAdminAddons::InputBase
 
     attribute_value = @object.send(attribute)
     return unless attribute_value
+    
+    binding.pry
 
     klass = class_from_attribute(attribute)
-    klass.find_by(id: attribute_value)
+    klass.find_by(attribute => attribute_value)
   end
 
   def class_from_attribute(attribute)
