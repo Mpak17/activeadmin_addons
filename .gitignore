@@ -16,3 +16,4 @@ spec/dummy/public/packs
 vendor/bundle
 node_modules
 src
+.idea/

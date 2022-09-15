@@ -57,11 +57,15 @@ module ActiveAdminAddons
     end
 
     def selected_collection
+      attr = valid_options[:collection_method] || :id
+
+      pp '=========='
+
       @selected_collection ||= begin
         if active_record_relation?(collection)
-          collection.model.where(id: input_value)
+          collection.model.where(attr => input_value)
         else
-          method_model.where(id: input_value)
+          method_model.where(attr => input_value)
         end
       end
     end
